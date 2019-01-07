@@ -29,7 +29,11 @@ function createWindow() {
 
 
     // https://electronjs.org/docs/api/browser-view
-    gameView = new BrowserView();
+    gameView = new BrowserView({
+        webPreferences:{
+            nodeIntegration: false
+        }
+    });
 
     win.setBrowserView(gameView);
 
@@ -83,7 +87,9 @@ function createWindow() {
         }
     });
     gameView.webContents.debugger.sendCommand('Network.enable');
-    gameView.webContents.loadURL('https://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854/');
+    //gameView.webContents.loadURL('https://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854/');
+    gameView.webContents.loadURL('https://google.com');
+    gameView.webContents.openDevTools({ mode: 'detach' });
     win.setBackgroundColor("#ccc");
 
 
